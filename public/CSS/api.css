@@ -64,8 +64,8 @@ h2 {
 }
 
 /* Lista de campos */
-.campos li {
-    margin-bottom: 0.5em;
+.campos {
+    margin-left: 0.5em;
     font-size: 1rem;
 }
 
