@@ -6,24 +6,20 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   background-color: #f9f9f9;
   color: #333;
-  line-height: 1.7;
+  line-height: 1.6;
   padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /* === HEADER Y NAVEGACIÓN === */
 header {
   background-color: #4a6f47;
+  /* tono coherente con conclusiones */
   color: white;
-  padding: 1.1rem 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header nav ul {
@@ -31,7 +27,7 @@ header nav ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 18px;
+  gap: 15px;
   padding: 0;
   margin: 0;
 }
@@ -39,18 +35,16 @@ header nav ul {
 header nav ul li a {
   color: white;
   text-decoration: none;
-  font-weight: 600;
-  padding: 0.55rem 1.2rem;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  box-shadow: inset 0 0 0 0 transparent;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
 }
 
 header nav ul li a:hover,
-header nav ul li a.active {
+nav a.active {
   background-color: #355e3b;
-  box-shadow: inset 0 -4px 0 0 #2c4e30;
-  color: #e0e0e0;
+  color: white;
 }
 
 /* === MAIN CONTENT === */
@@ -72,7 +66,8 @@ main:hover {
   padding-bottom: 2rem;
 }
 
-.contenido h1, .contenido h2 {
+.contenido h1,
+.contenido h2 {
   color: #4a6f47;
   margin-bottom: 1.25rem;
   font-weight: 700;
@@ -133,6 +128,7 @@ main:hover {
 
 
 }
+
 .titulo-principal {
   text-align: center;
   margin: 2.5rem auto 1.5rem auto;
@@ -148,4 +144,45 @@ main:hover {
   color: #2c4e30;
   font-weight: 700;
   margin: 0;
+}
+
+/* === FOOTER === */
+.footer {
+  background-color: #4a6f47;
+  color: white;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 0.95rem;
+}
+
+.footer-contenedor {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.footer-contenedor p {
+  margin-bottom: 0.8rem;
+}
+
+.footer-enlaces {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0;
+}
+
+.footer-enlaces li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-enlaces li a:hover {
+  color: #d3d3d3;
 }
