@@ -40,18 +40,45 @@ header nav ul li a:hover {
     background-color: #355e3b;
 }
 
+nav a.active {
+    background-color: #355e3b;
+    color: white;
+}
+
 /* Sección del mapa */
 #mapa_incendis {
     padding: 2rem;
     max-width: 1200px;
     margin: auto;
-    text-align: center;
+    text-align: left;
 }
 
 #mapa_incendis h1 {
     color: #4a6f47;
     font-size: 2rem;
     margin-bottom: 1rem;
+}
+
+.contenedor-mapa {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.preguntas-superior {
+    flex: 1;
+    min-width: 250px;
+    max-width: 40%;
+}
+
+.contenedor-derecha {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-width: 300px;
 }
 
 #map_inc {
@@ -62,14 +89,38 @@ header nav ul li a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Navegación activa */
-nav a.active {
-    background-color: #355e3b;
-    color: white;
+#graficoIncendisMes {
+    max-width: 100%;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
 }
 
+#graficoSuperficieAny {
+    max-width: 100%;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
 
-/* Responsivo */
+/* Contenedores gráficos comparativas Plotly */
+.graficos-lineas > div {
+    width: 100%;
+    height: 400px; /* Altura necesaria para que Plotly pinte bien */
+    margin-bottom: 30px;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     header nav ul {
         flex-direction: column;
@@ -80,15 +131,19 @@ nav a.active {
         margin: 10px 0;
     }
 
-    #mapa_incendis {
-        padding: 1rem;
+    .contenedor-mapa {
+        flex-direction: column;
+    }
+
+    .contenedor-derecha {
+        width: 100%;
     }
 
     #map_inc {
         width: 100%;
-        height: 500px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .graficos-lineas > div {
+        height: 300px; /* Altura menor para móvil */
     }
 }

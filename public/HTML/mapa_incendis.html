@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ca">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,18 +8,22 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js" defer></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js" defer></script> <!-- Plotly añadido -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   <script src="/public/script/mapa.js" defer></script>
+  <script src="/public/script/incendio_mes.js" defer></script>
+  <script src="/public/script/lineas.js" defer></script> 
+  <script src="/public/script/comparativas.js" defer></script>
 </head>
-
 <body>
   <header>
     <nav>
       <ul>
         <li><a href="/public/HTML/consultas.html">Consultas</a></li>
-        <li><a href="/public/HTML/mapa_incendis.html">Mapa</a></li>
+        <li><a href="/public/HTML/mapa_incendis.html" class="active">Mapa</a></li>
         <li><a href="/public/HTML/API_GEN.html">API</a></li>
         <li><a href="/public/HTML/ods.html">ODS</a></li>
-        <li><a href="/public/index.html">Inicio</a></li>
+        <li><a href="/public/HTML/index.html">Inicio</a></li>
       </ul>
     </nav>
   </header>
@@ -29,15 +32,46 @@
     <section id="mapa_incendis">
       <h1>Mapa d'Incendis</h1>
       <div id="filtros" class="filtros"></div>
-      <div id="map_inc" style="height: 500px; margin-top: 1em;"></div>
+      <div class="contenedor-mapa">
+        <div class="preguntas-superior">
+          <p>
+            - Quants incendis hi ha hagut per comarca i municipi?<br>
+            - Quina és la superfície total cremada per comarca i municipi?
+          </p>
+          <p>
+            - Hi ha alguna època de l'any amb més incendis?
+          </p>
+        </div>
+        <div class="contenedor-derecha">
+          <div id="map_inc"></div>
+          <canvas id="graficoIncendisMes"></canvas>
+          <canvas id="graficoSuperficieAny"></canvas>
+        </div>
+      </div>
+    </section>
+
+    
+    <section id="analisisIncendios">
+      <h2>Resum General i Anàlisi</h2>
+      <table id="tablaResumen" class="tabla-resumen"></table>
+
+      <div class="graficos-lineas">
+        <div id="grafico1"></div>
+        <div id="grafico2"></div>
+        <div id="grafico3"></div>
+        <div id="grafico4"></div>
+        <div id="grafico5"></div>
+      </div>
     </section>
   </main>
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       initMapa();
+      initIncendios();
+      initSuperficiePorAny();
+      initComparativas();
     });
   </script>
 </body>
-
 </html>
