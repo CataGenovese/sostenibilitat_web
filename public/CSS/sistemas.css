@@ -1,0 +1,73 @@
+/* General */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Encabezado */
+header {
+    background-color: #4a6f47;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* Secciones */
+.section {
+    background-color: white;
+    margin: 2rem auto;
+    padding: 2rem;
+    max-width: 1000px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+.section h2 {
+    color: #4a6f47;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.section h3 {
+    color: #355e3b;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+}
+
+/* Listas */
+ul {
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .section {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .section h2 {
+        font-size: 1.5rem;
+    }
+
+    .section h3 {
+        font-size: 1.1rem;
+    }
+}
