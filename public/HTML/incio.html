@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Inicio - Estudio Incendios</title>
+  <link rel="stylesheet" href="/public/CSS/inicio.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/public/HTML/inicio.html" class="active">Inicio</a></li>
+        <li><a href="/public/HTML/consultas.html">Consultas</a></li>
+        <li><a href="/public/HTML/sistemas.html">Sistemas</a></li>
+        <li><a href="/public/HTML/mapa_incendis.html">Mapa</a></li>
+        <li><a href="/public/HTML/API_GEN.html">API</a></li>
+        <li><a href="/public/HTML/ods.html">ODS</a></li>
+        <li><a href="/public/HTML/conclusiones.html">Conclusiones</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contenido">
+      <h1>Objetivo</h1>
+      <p>
+        Este proyecto tiene como finalidad explorar posibles relaciones entre la ocurrencia de incendios forestales y variables climáticas como la temperatura y la pluviometría en Catalunya durante el periodo 2011-2023. A través del análisis de datos históricos, se pretende identificar patrones, tendencias o correlaciones que puedan aportar información relevante sobre cómo el clima podría influir (o no) en la frecuencia y extensión de los incendios. Este enfoque permite reflexionar de manera crítica sobre la complejidad de los fenómenos naturales y su vínculo con el cambio climático.
+      </p>
+    </section>
+
+    <section class="contenido">
+      <h1>Explicación del Dataset</h1>
+      <p>
+        Para llevar a cabo nuestro análisis, hemos utilizado diferentes conjuntos de datos proporcionados por el portal de <strong>Dades Obertes</strong> de la Generalitat de Catalunya.
+      </p>
+      <p>
+        El dataset original estaba dividido por años: de 2011 a 2023, uno aparte para 2024 y otro para 2025. Para facilitar el análisis, decidimos unificarlos en una sola tabla que incluye los siguientes campos principales:
+      </p>
+      <ul>
+        <li><strong>data_incendi</strong> → Fecha del incendio</li>
+        <li><strong>codi_comarca</strong> y <strong>comarca</strong> → Código e identificación de la comarca</li>
+        <li><strong>codi_municipi</strong> y <strong>termemunic</strong> → Código y nombre del municipio donde se inició el incendio</li>
+        <li><strong>haforestal</strong> → Superficie forestal quemada (en hectáreas)</li>
+        <li><strong>hanoforest</strong> → Superficie no forestal quemada (en hectáreas)</li>
+      </ul>
+
+      <p>
+        Como los archivos no incluían información geográfica, también añadimos manualmente los campos de latitud y longitud para poder trabajar con mapas y visualizaciones espaciales.
+      </p>
+      <p>
+        Para buscar posibles relaciones con el clima, incorporamos un segundo dataset también extraído de <strong>Dades Obertes</strong>, que contiene información sobre las temperaturas medias anuales en distintas estaciones meteorológicas de Catalunya. Las variables utilizadas fueron:
+      </p>
+      <ul>
+        <li><strong>estacions</strong> → Nombre de la estación meteorológica</li>
+        <li><strong>altitud (m)</strong></li>
+        <li><strong>mitjana anual</strong></li>
+        <li><strong>mitjana de màximes</strong></li>
+        <li><strong>mitjana de mínimes</strong></li>
+        <li><strong>màxima absoluta</strong></li>
+        <li><strong>mínima absoluta</strong></li>
+        <li><strong>any</strong> → Año de registro</li>
+      </ul>
+
+      <p>
+        Estos datos nos han permitido comparar la evolución de las temperaturas con la ocurrencia de incendios a lo largo de los años.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
