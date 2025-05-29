@@ -30,19 +30,22 @@
   <main>
     <section id="API_GEN">
       <h1>API Gencat</h1>
-      <p>Consulta interactiva de incendios forestales en Catalunya en 2025.</p>
+      <p class="campos">Esta API de codigo abierto está basada en los incedios forestales de Catalunya en el año 2025, con detalle de
+        la fecha, el municipio en el cuando se han iniciado y las superficies forestales y no forestales afectadas, en
+        hectáreas.</p><br>
 
-      <h2>Campos disponibles</h2>
-      <ul class="campos">
-        <li><strong>DATA INCENDI:</strong> Fecha de inicio del incendio.</li>
-        <li><strong>CODI COMARCA:</strong> Código de comarca Idescat.</li>
-        <li><strong>COMARCA:</strong> Nombre de la comarca.</li>
-        <li><strong>CODI MUNICIPI:</strong> Código de municipio Idescat.</li>
-        <li><strong>TERMEMUNIC:</strong> Municipio del incendio.</li>
-        <li><strong>HAARBRADES:</strong> Hectáreas forestales arboladas.</li>
-        <li><strong>HANOARBRAD:</strong> Hectáreas de matoll o herbáceas.</li>
-        <li><strong>HAFORESTAL:</strong> Total forestal afectado (suma anterior).</li>
-      </ul>
+      <h2>Tipos de datos</h2>
+      <div class="campos">
+        <p><strong>DATA INCENDI:</strong> Data d’inici de l’incendi.</p>
+        <p><strong>CODI COMARCA:</strong> Codi Idescat de la comarca.</p>
+        <p><strong>COMARCA:</strong> Comarca d’inici de l’incendi.</p>
+        <p><strong>CODI MUNICIPI:</strong> Codi Idescat del municipi.</p>
+        <p><strong>TERMEMUNIC:</strong> Municipi d’inici de l’incendi.</p>
+        <p><strong>HAARBRADES:</strong> Superfície forestal arbrada cremada, en hectàrees.</p>
+        <p><strong>HANOARBRAD:</strong> Superfície forestal de matoll, herbàcia o pastura cremada, en hectàrees.</p>
+        <p><strong>HAFORESTAL:</strong> Superfície forestal cremada, en hectàrees. Suma la columna HaArbrades +
+          HaNoArbrades.</p>
+      </div><br>
 
       <h2>Filtrar datos</h2>
       <div id="contenedor-filtros-resultados">
