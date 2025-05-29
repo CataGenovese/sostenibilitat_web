@@ -46,7 +46,7 @@ nav a.active {
 /* === SECCIÓN ODS === */
 #ods {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 40px auto 0 auto; /* margen arriba 40px, horizontal auto, abajo 0 */
     padding: 20px 30px;
     display: flex;
     flex-wrap: wrap;

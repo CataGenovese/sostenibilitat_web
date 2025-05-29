@@ -49,26 +49,78 @@ nav a.active {
 /* === MAIN CONTAINER === */
 main {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 40px auto 0 auto;
+  /* margen arriba 40px, horizontal auto, abajo 0 */
 }
 
-h1,
-h2 {
-  margin-bottom: 20px;
-  color: #264653;
+h1 {
+  color: #4a6f47;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
+}
+
+h2 {
+  color: #355e3b;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  border-left: 4px solid #4a6f47;
+  padding-left: 10px;
 }
 
 /* === FILTROS === */
 .filtros {
   margin-bottom: 15px;
   padding: 10px;
-  background-color: #e9ecef;
+  background-color: #f3fbf0;
   border-radius: 8px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+#filtros label {
+    font-weight: bold;
+    margin: 1rem 0 0.5rem;
+    color: #1b5e20;
+    font-size: 1rem;
+}
+
+#filtros select {
+    /*width: 100%;*/
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 12px;
+    background: #e0f2f1;
+    box-shadow: inset 4px 4px 10px #c8e6c9, inset -4px -4px 10px #ffffff;
+    color: #1b5e20;
+    transition: all 0.3s ease;
+}
+
+#filtros select:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px #81c784;
+}
+
+/* Botón filtrar dentro de filtros */
+#filtrar {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    background-color: #388e3c;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+    margin-top: 4px;
+}
+
+#filtrar:hover {
+    background-color: #2e7030;
 }
 
 /* === MAPA E INCISDIS === */
@@ -163,6 +215,7 @@ canvas {
     align-items: center;
   }
 }
+
 /* === FOOTER === */
 .footer {
   background-color: #4a6f47;
@@ -203,4 +256,3 @@ canvas {
 .footer-enlaces li a:hover {
   color: #d3d3d3;
 }
-
