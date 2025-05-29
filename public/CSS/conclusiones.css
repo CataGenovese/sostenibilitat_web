@@ -107,3 +107,45 @@ nav a.active {
         margin: 20px;
     }
 }
+
+/* === FOOTER === */
+.footer {
+  background-color: #4a6f47;
+  color: white;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 0.95rem;
+}
+
+.footer-contenedor {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.footer-contenedor p {
+  margin-bottom: 0.8rem;
+}
+
+.footer-enlaces {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0;
+}
+
+.footer-enlaces li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-enlaces li a:hover {
+  color: #d3d3d3;
+}
+
