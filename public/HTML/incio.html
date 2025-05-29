@@ -9,12 +9,12 @@
 <body>
   <header>
     <nav>
-       <ul>
-        <li><a href="/public/HTML/menu.html">Menu</a></li>
-        <li><a href="/public/HTML/incio.html">Inicio</a></li>
+      <ul>
+        <li><a href="/public/HTML/menu.html">Menú</a></li>
+        <li><a href="/public/HTML/inicio.html">Inicio</a></li>
         <li><a href="/public/HTML/consultas.html">Consultas</a></li>
         <li><a href="/public/HTML/sistemas.html">Sistemas</a></li>
-        <li><a href="/public/HTML/mapa_incendis.html">Investigació</a></li>
+        <li><a href="/public/HTML/mapa_incendis.html">Mapa</a></li>
         <li><a href="/public/HTML/API_GEN.html">API</a></li>
         <li><a href="/public/HTML/ods.html">ODS</a></li>
         <li><a href="/public/HTML/conclusiones.html">Conclusiones</a></li>
@@ -31,10 +31,28 @@
     </section>
 
     <section class="contenido">
-      <h1>Explicación del Dataset</h1>
+      <h1>Explicación de los Datasets</h1>
       <p>
         Para llevar a cabo nuestro análisis, hemos utilizado diferentes conjuntos de datos proporcionados por el portal de <strong>Dades Obertes</strong> de la Generalitat de Catalunya.
       </p>
+      <ul>
+        <li>
+          <a href="https://analisi.transparenciacatalunya.cat/Medi-Rural-Pesca/Incendis-forestals-a-Catalunya-Anys-2011-2023/bks7-dkfd/about_data" target="_blank" rel="noopener noreferrer">
+            Dataset oficial de Incendios Forestales en Catalunya (2011-2023)
+          </a>
+        </li>
+        <li>
+          <a href="https://analisi.transparenciacatalunya.cat/Medi-Rural-Pesca/Incendis-forestals-per-comarques-a-Catalunya-Any-a/crs7-idxi/about_data" target="_blank" rel="noopener noreferrer">
+            Dataset oficial de Incendios Forestales en Catalunya (2024)
+          </a>
+        </li>
+        <li>
+          <a href="https://analisi.transparenciacatalunya.cat/Medi-Rural-Pesca/Incendis-forestals-per-comarques-a-Catalunya-Any-e/9r29-e8ha/about_data" target="_blank" rel="noopener noreferrer">
+            Dataset oficial de Incendios Forestales en Catalunya (2025)
+          </a>
+        </li>
+      </ul>
+
       <p>
         El dataset original estaba dividido por años: de 2011 a 2023, uno aparte para 2024 y otro para 2025. Para facilitar el análisis, decidimos unificarlos en una sola tabla que incluye los siguientes campos principales:
       </p>
@@ -49,22 +67,36 @@
       <p>
         Como los archivos no incluían información geográfica, también añadimos manualmente los campos de latitud y longitud para poder trabajar con mapas y visualizaciones espaciales.
       </p>
+
+      <h2>Dataset de Temperatura</h2>
       <p>
-        Para buscar posibles relaciones con el clima, incorporamos un segundo dataset también extraído de <strong>Dades Obertes</strong>, que contiene información sobre las temperaturas medias anuales en distintas estaciones meteorológicas de Catalunya. Las variables utilizadas fueron:
+        Para analizar la influencia del clima en la ocurrencia de incendios forestales, hemos incorporado un dataset de temperaturas medias anuales proporcionado por el Instituto de Estadística de Cataluña (<a href="https://www.idescat.cat/indicadors/?id=aec&n=15192" target="_blank" rel="noopener noreferrer">IDESCAT</a>). Este conjunto de datos contiene registros históricos de temperatura en distintas estaciones meteorológicas repartidas por todo el territorio catalán.
       </p>
+      <p>Las principales variables incluidas en este dataset son:</p>
       <ul>
-        <li><strong>estacions</strong> → Nombre de la estación meteorológica</li>
-        <li><strong>altitud (m)</strong></li>
-        <li><strong>mitjana anual</strong></li>
-        <li><strong>mitjana de màximes</strong></li>
-        <li><strong>mitjana de mínimes</strong></li>
-        <li><strong>màxima absoluta</strong></li>
-        <li><strong>mínima absoluta</strong></li>
-        <li><strong>any</strong> → Año de registro</li>
+        <li><strong>Estación meteorológica</strong>: Identificación del punto de medición de la temperatura.</li>
+        <li><strong>Altitud (m)</strong>: Altitud sobre el nivel del mar donde se encuentra la estación, ya que la temperatura puede variar con la altura.</li>
+        <li><strong>Temperatura media anual (°C)</strong>: Valor promedio de la temperatura durante todo el año.</li>
+        <li><strong>Temperatura media de máximas (°C)</strong>: Promedio de las temperaturas máximas registradas durante el año.</li>
+        <li><strong>Temperatura media de mínimas (°C)</strong>: Promedio de las temperaturas mínimas registradas durante el año.</li>
+        <li><strong>Temperatura máxima absoluta (°C)</strong>: Valor más alto registrado en un año.</li>
+        <li><strong>Temperatura mínima absoluta (°C)</strong>: Valor más bajo registrado en un año.</li>
+        <li><strong>Año de registro</strong>: Año correspondiente a cada medición.</li>
       </ul>
+      <p>
+        Este dataset nos permite comparar la evolución de las temperaturas a lo largo de los años y examinar posibles correlaciones con la frecuencia y magnitud de los incendios forestales. El análisis espacial y temporal de estos datos es fundamental para entender mejor cómo las variaciones climáticas pueden influir en el riesgo y comportamiento de los incendios en Catalunya.
+      </p>
+
+      <h2>Dataset de Pluviometría</h2>
+      <p>
+        Además, hemos utilizado datos de pluviometría, que contienen registros históricos de precipitaciones en Catalunya. Estos datos han sido obtenidos también del portal <strong>Dades Obertes</strong> y nos ayudan a evaluar cómo las variaciones en las precipitaciones pueden estar relacionadas con la frecuencia e intensidad de los incendios.
+      </p>
+      <p>
+        <a href="https://www.idescat.cat/indicadors/?id=aec&n=15195" target="_blank" rel="noopener noreferrer">Dataset oficial de Pluviometría en Catalunya</a>
+      </p>
 
       <p>
-        Estos datos nos han permitido comparar la evolución de las temperaturas con la ocurrencia de incendios a lo largo de los años.
+        La combinación de estos datasets climáticos con los datos de incendios permite realizar un análisis integral del impacto del clima en los incendios forestales en Catalunya.
       </p>
     </section>
   </main>
