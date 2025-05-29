@@ -1,52 +1,57 @@
 function initIncendios() {
-  Papa.parse("/public/datos/Incendis_con_coordenades_complet (1).csv", {
+  Papa.parse('/public/datos/Incendis_con_coordenades_complet (1).csv', {
     download: true,
     header: true,
+    dynamicTyping: true,
     complete: function (results) {
-      const data = results.data;
-      const meses = Array(12).fill(0);
+      const data = results.data.filter(row => row['DATA INCENDI']);
+      const incendiosPorMes = new Array(12).fill(0);
 
       data.forEach(row => {
-        const fecha = new Date(row["DATA INCENDI"]);
-        const year = fecha.getFullYear();
-
-        if (!isNaN(fecha) && year >= 2011 && year <= 2025) {
-          const mes = fecha.getMonth(); // 0 = Gener, 11 = Desembre
-          meses[mes]++;
+        const partes = row['DATA INCENDI'].split('/');
+        if (partes.length === 3) {
+          const fecha = new Date(`${partes[2]}-${partes[1]}-${partes[0]}`);
+          if (!isNaN(fecha)) {
+            const mes = fecha.getMonth(); // 0 = enero, 11 = diciembre
+            incendiosPorMes[mes]++;
+          }
         }
       });
 
-      const etiquetas = [
-        "Gener", "Febrer", "Març", "Abril", "Maig", "Juny",
-        "Juliol", "Agost", "Setembre", "Octubre", "Novembre", "Desembre"
+      const meses = [
+        'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+        'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+
       ];
 
-      const ctx = document.getElementById("graficoIncendisMes").getContext("2d");
+      const ctx = document.getElementById('graficoIncendisMes').getContext('2d');
       new Chart(ctx, {
-        type: "bar",
+        type: 'bar',
         data: {
-          labels: etiquetas,
+          labels: meses,
           datasets: [{
-            label: "Nombre d'Incendis",
-            data: meses,
-            backgroundColor: "orange"
+            label: 'Nombre d\'incendis per mes',
+            data: incendiosPorMes,
+            backgroundColor: 'rgba(255, 99, 132, 0.6)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
           }]
         },
         options: {
           responsive: true,
-          plugins: {
-            title: {
-              display: true,
-              text: "Incendis per Mes a Catalunya (2011–2025)"
-            }
-          },
           scales: {
-            x: {
-              title: { display: true, text: "Mes" }
-            },
             y: {
               beginAtZero: true,
-              title: { display: true, text: "Nombre d'Incendis" }
+              title: {
+                display: true,
+                text: 'Nombre d\'incendis'
+              }
+            },
+            x: {
+              title: {
+                display: true,
+                text: 'Mes'
+              }
             }
           }
         }

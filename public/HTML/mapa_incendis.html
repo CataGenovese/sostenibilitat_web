@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mapa d'Incendis</title>
+  <title>Mapa de Incendios</title>
   <link rel="stylesheet" href="/public/CSS/mapa.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
@@ -12,18 +13,19 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   <script src="/public/script/mapa.js" defer></script>
   <script src="/public/script/incendio_mes.js" defer></script>
-  <script src="/public/script/lineas.js" defer></script> 
+  <script src="/public/script/lineas.js" defer></script>
   <script src="/public/script/comparativas.js" defer></script>
 </head>
+
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="/public/HTML/menu.html">Menu</a></li>
+        <li><a href="/public/HTML/menu.html">Menú</a></li>
         <li><a href="/public/HTML/incio.html">Inicio</a></li>
         <li><a href="/public/HTML/consultas.html">Consultas</a></li>
         <li><a href="/public/HTML/sistemas.html">Sistemas</a></li>
-        <li><a href="/public/HTML/mapa_incendis.html">Mapa</a></li>
+        <li><a href="/public/HTML/mapa_incendis.html">Investigación</a></li>
         <li><a href="/public/HTML/API_GEN.html">API</a></li>
         <li><a href="/public/HTML/ods.html">ODS</a></li>
         <li><a href="/public/HTML/conclusiones.html">Conclusiones</a></li>
@@ -33,16 +35,22 @@
 
   <main>
     <section id="mapa_incendis">
-      <h1>Investigació</h1>
+      <h1>Investigación</h1>
       <div id="filtros" class="filtros"></div>
       <div class="contenedor-mapa">
         <div class="preguntas-superior">
           <p>
-            - Quants incendis hi ha hagut per comarca i municipi?<br>
-            - Quina és la superfície total cremada per comarca i municipi?
+            - ¿Cuántos incendios ha habido por comarca y municipio?<br>
+            - ¿Cuál es la superficie total quemada por comarca y municipio?
           </p>
           <p>
-            - Hi ha alguna època de l'any amb més incendis?
+            - ¿Hay alguna época del año con más incendios?
+          </p>
+
+          <p>
+            - ¿Cómo ha evolucionado el número de incendios a lo largo de los años?
+
+            - ¿Cómo ha variado la superficie quemada a lo largo de los años?
           </p>
         </div>
         <div class="contenedor-derecha">
@@ -54,7 +62,7 @@
     </section>
 
     <section id="analisisIncendios">
-      <h2>Resum General i Anàlisi</h2>
+      <h2>Resumen General y Análisis</h2>
       <table id="tablaResumen" class="tabla-resumen"></table>
 
       <div class="graficos-lineas">
@@ -69,23 +77,17 @@
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      initMapa?.();
+      inicializarMapa?.();
       initIncendios?.();
       initSuperficiePorAny?.();
       initComparativas?.();
     });
   </script>
-   <footer class="footer">
-  <div class="footer-contenedor">
-    <p>&copy; 2025 Proyecto Incendios en Catalunya · Todos los derechos reservados</p>
-    <ul class="footer-enlaces">
-      <li><a href="/public/HTML/menu.html">Menú</a></li>
-      <li><a href="/public/HTML/inicio.html">Inicio</a></li>
-      <li><a href="/public/HTML/consultas.html">Consultas</a></li>
-      <li><a href="/public/HTML/conclusiones.html">Conclusiones</a></li>
-    </ul>
-  </div>
-</footer>
-
+  <footer class="footer">
+    <div class="footer-contenedor">
+      <p>&copy; 2025 Proyecto Incendios en Catalunya · Todos los derechos reservados</p>
+    </div>
+  </footer>
 </body>
+
 </html>

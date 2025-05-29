@@ -34,7 +34,7 @@ function initSuperficiePorAny() {
           labels: anys,
           datasets: [
             {
-              label: "Superfície Forestal Cremada (ha)",
+              label: "Superficie Forestal Quemada (ha)",
               data: superfForestals,
               borderColor: "green",
               backgroundColor: "rgba(0,128,0,0.1)",
@@ -43,7 +43,7 @@ function initSuperficiePorAny() {
               pointRadius: 5
             },
             {
-              label: "Superfície No Forestal Cremada (ha)",
+              label: "Superficie No Forestal Quemada (ha)",
               data: superfNoForestals,
               borderColor: "red",
               backgroundColor: "rgba(255,0,0,0.1)",
@@ -58,16 +58,16 @@ function initSuperficiePorAny() {
           plugins: {
             title: {
               display: true,
-              text: "Superfície Total Cremada per Any a Catalunya (2011–2025)"
+              text: "Superficie Total Quemada por Año en Cataluña (2011–2025)"
             }
           },
           scales: {
             x: {
-              title: { display: true, text: "Any" }
+              title: { display: true, text: "Año" }
             },
             y: {
               beginAtZero: true,
-              title: { display: true, text: "Superfície (ha)" }
+              title: { display: true, text: "Superficie (ha)" }
             }
           }
         }

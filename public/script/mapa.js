@@ -1,45 +1,45 @@
-const colorScale = {
+const escalaColores = {
   'Muy alta': 'red',
   'Alta': 'orange',
   'Media': 'yellow',
   'Baja': 'green'
 };
 
-let allData = [];
+let todosDatos = [];
 
-function initMapa() {
-  const map = L.map('map_inc').setView([41.8, 1.6], 8);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+function inicializarMapa() {
+  const mapa = L.map('map_inc').setView([41.8, 1.6], 8);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapa);
 
   Papa.parse("/public/datos/Incendis_con_coordenades_complet (1).csv", {
     header: true,
     download: true,
-    complete: function (results) {
-      allData = results.data.filter(d => d.LATITUD && d.LONGITUD);
-      allData.forEach(row => {
-        const hf = parseFloat(row.HAFORESTAL) || 0;
-        const hnf = parseFloat(row.HANOFOREST) || 0;
-        row.Tipus = hf > hnf ? 'Forestal' : hf < hnf ? 'No forestal' : 'Mixta';
+    complete: function (resultados) {
+      todosDatos = resultados.data.filter(d => d.LATITUD && d.LONGITUD);
+      todosDatos.forEach(fila => {
+        const haForestal = parseFloat(fila.HAFORESTAL) || 0;
+        const haNoForestal = parseFloat(fila.HANOFOREST) || 0;
+        fila.Tipo = haForestal > haNoForestal ? 'Forestal' : haForestal < haNoForestal ? 'No forestal' : 'Mixta';
       });
 
       const resumen = {};
       let total = 0;
-      allData.forEach(row => {
-        const tipo = row.Tipus;
+      todosDatos.forEach(fila => {
+        const tipo = fila.Tipo;
         total++;
-        const hf = parseFloat(row.HAFORESTAL) || 0;
-        const hnf = parseFloat(row.HANOFOREST) || 0;
-        if (!resumen[tipo]) resumen[tipo] = { sup: 0, count: 0 };
-        resumen[tipo].sup += hf + hnf;
-        resumen[tipo].count += 1;
+        const haForestal = parseFloat(fila.HAFORESTAL) || 0;
+        const haNoForestal = parseFloat(fila.HANOFOREST) || 0;
+        if (!resumen[tipo]) resumen[tipo] = { sup: 0, contador: 0 };
+        resumen[tipo].sup += haForestal + haNoForestal;
+        resumen[tipo].contador += 1;
       });
 
       const valores = [];
-      for (let t in resumen) {
-        const r = resumen[t];
-        const porc = (r.count / total) * 100;
-        resumen[t].valor = r.sup + porc;
-        valores.push(resumen[t].valor);
+      for (let tipo in resumen) {
+        const r = resumen[tipo];
+        const porcentaje = (r.contador / total) * 100;
+        resumen[tipo].valor = r.sup + porcentaje;
+        valores.push(resumen[tipo].valor);
       }
 
       valores.sort((a, b) => a - b);
@@ -49,33 +49,33 @@ function initMapa() {
         valores[Math.floor(valores.length * 0.75)],
       ];
 
-      for (let t in resumen) {
-        const v = resumen[t].valor;
-        resumen[t].nivel = v <= q1 ? 'Baja' : v <= q2 ? 'Media' : v <= q3 ? 'Alta' : 'Muy alta';
+      for (let tipo in resumen) {
+        const v = resumen[tipo].valor;
+        resumen[tipo].nivel = v <= q1 ? 'Baja' : v <= q2 ? 'Media' : v <= q3 ? 'Alta' : 'Muy alta';
       }
 
-      createDropdowns(allData);
-      renderMarkers(allData, map, resumen);
+      crearDesplegables(todosDatos);
+      mostrarMarcadores(todosDatos, mapa, resumen);
     }
   });
 }
 
-function createDropdowns(data) {
-  const comarcaSet = new Set(data.map(d => d.COMARCA).filter(Boolean));
-  const tipusSet = new Set(data.map(d => d.Tipus).filter(Boolean));
+function crearDesplegables(datos) {
+  const conjuntoComarcas = new Set(datos.map(d => d.COMARCA).filter(Boolean));
+  const conjuntoTipos = new Set(datos.map(d => d.Tipo).filter(Boolean));
 
-  const filters = document.getElementById("filtros");
-  filters.innerHTML = `
+  const filtros = document.getElementById("filtros");
+  filtros.innerHTML = `
     <label for="comarca">Comarca:</label>
     <select id="comarca">
-      <option value="">Totes</option>
-      ${[...comarcaSet].map(c => `<option value="${c}">${c}</option>`).join('')}
+      <option value="">Todas</option>
+      ${[...conjuntoComarcas].map(c => `<option value="${c}">${c}</option>`).join('')}
     </select>
 
-    <label for="tipus">Tipus:</label>
-    <select id="tipus">
-      <option value="">Tots</option>
-      ${[...tipusSet].map(t => `<option value="${t}">${t}</option>`).join('')}
+    <label for="tipo">Tipo:</label>
+    <select id="tipo">
+      <option value="">Todos</option>
+      ${[...conjuntoTipos].map(t => `<option value="${t}">${t}</option>`).join('')}
     </select>
 
     <button id="filtrar">Filtrar</button>
@@ -83,41 +83,41 @@ function createDropdowns(data) {
 
   document.getElementById("filtrar").addEventListener("click", () => {
     const comarca = document.getElementById("comarca").value;
-    const tipus = document.getElementById("tipus").value;
-    const map = window.mapRef;
-    map.eachLayer(layer => {
+    const tipo = document.getElementById("tipo").value;
+    const mapa = window.referenciaMapa;
+    mapa.eachLayer(layer => {
       if (layer instanceof L.CircleMarker) {
-        map.removeLayer(layer);
+        mapa.removeLayer(layer);
       }
     });
-    const resumen = buildResumen(allData);
-    const filtered = allData.filter(row =>
-      (!comarca || row.COMARCA === comarca) &&
-      (!tipus || row.Tipus === tipus)
+    const resumen = construirResumen(todosDatos);
+    const filtrados = todosDatos.filter(fila =>
+      (!comarca || fila.COMARCA === comarca) &&
+      (!tipo || fila.Tipo === tipo)
     );
-    renderMarkers(filtered, map, resumen);
+    mostrarMarcadores(filtrados, mapa, resumen);
   });
 }
 
-function buildResumen(data) {
+function construirResumen(datos) {
   const resumen = {};
   let total = 0;
-  data.forEach(row => {
-    const tipo = row.Tipus;
+  datos.forEach(fila => {
+    const tipo = fila.Tipo;
     total++;
-    const hf = parseFloat(row.HAFORESTAL) || 0;
-    const hnf = parseFloat(row.HANOFOREST) || 0;
-    if (!resumen[tipo]) resumen[tipo] = { sup: 0, count: 0 };
-    resumen[tipo].sup += hf + hnf;
-    resumen[tipo].count += 1;
+    const haForestal = parseFloat(fila.HAFORESTAL) || 0;
+    const haNoForestal = parseFloat(fila.HANOFOREST) || 0;
+    if (!resumen[tipo]) resumen[tipo] = { sup: 0, contador: 0 };
+    resumen[tipo].sup += haForestal + haNoForestal;
+    resumen[tipo].contador += 1;
   });
 
   const valores = [];
-  for (let t in resumen) {
-    const r = resumen[t];
-    const porc = (r.count / total) * 100;
-    resumen[t].valor = r.sup + porc;
-    valores.push(resumen[t].valor);
+  for (let tipo in resumen) {
+    const r = resumen[tipo];
+    const porcentaje = (r.contador / total) * 100;
+    resumen[tipo].valor = r.sup + porcentaje;
+    valores.push(resumen[tipo].valor);
   }
 
   valores.sort((a, b) => a - b);
@@ -127,48 +127,48 @@ function buildResumen(data) {
     valores[Math.floor(valores.length * 0.75)],
   ];
 
-  for (let t in resumen) {
-    const v = resumen[t].valor;
-    resumen[t].nivel = v <= q1 ? 'Baja' : v <= q2 ? 'Media' : v <= q3 ? 'Alta' : 'Muy alta';
+  for (let tipo in resumen) {
+    const v = resumen[tipo].valor;
+    resumen[tipo].nivel = v <= q1 ? 'Baja' : v <= q2 ? 'Media' : v <= q3 ? 'Alta' : 'Muy alta';
   }
 
   return resumen;
 }
 
-function renderMarkers(data, map, resumen) {
-  data.forEach(row => {
-    const lat = parseFloat(row.LATITUD);
-    const lon = parseFloat(row.LONGITUD);
-    const tipo = row.Tipus;
+function mostrarMarcadores(datos, mapa, resumen) {
+  datos.forEach(fila => {
+    const lat = parseFloat(fila.LATITUD);
+    const lon = parseFloat(fila.LONGITUD);
+    const tipo = fila.Tipo;
     const prioridad = resumen[tipo].nivel;
-    const color = colorScale[prioridad] || 'gray';
+    const color = escalaColores[prioridad] || 'gray';
 
     L.circleMarker([lat, lon], {
       radius: 6,
       color: color,
       fillOpacity: 0.8
     }).bindPopup(`
-      <strong>${row.TERMEMUNIC}</strong> - ${row["DATA INCENDI"]}<br>
-      Tipus: ${tipo}<br>
-      Prioritat: ${prioridad}
-    `).addTo(map);
+      <strong>${fila.TERMEMUNIC}</strong> - ${fila["DATA INCENDI"]}<br>
+      Tipo: ${tipo}<br>
+      Prioridad: ${prioridad}
+    `).addTo(mapa);
   });
 
-  if (!map.legendAdded) {
-    const legend = L.control({ position: 'bottomleft' });
-    legend.onAdd = function () {
-      const div = L.DomUtil.create('div', 'legend');
-      div.innerHTML = "<strong>Prioritat</strong><br>";
-      for (const key in colorScale) {
-        div.innerHTML += `<i style="background:${colorScale[key]}"></i> ${key}<br>`;
+  if (!mapa.leyendaAgregada) {
+    const leyenda = L.control({ position: 'bottomleft' });
+    leyenda.onAdd = function () {
+      const div = L.DomUtil.create('div', 'leyenda');
+      div.innerHTML = "<strong>Prioridad</strong><br>";
+      for (const clave in escalaColores) {
+        div.innerHTML += `<i style="background:${escalaColores[clave]}"></i> ${clave}<br>`;
       }
       return div;
     };
-    legend.addTo(map);
-    map.legendAdded = true;
+    leyenda.addTo(mapa);
+    mapa.leyendaAgregada = true;
   }
 
-  window.mapRef = map;
+  window.referenciaMapa = mapa;
 }
 
-window.initMapa = initMapa;
+window.inicializarMapa = inicializarMapa;
