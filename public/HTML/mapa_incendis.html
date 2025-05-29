@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
   <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js" defer></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js" defer></script> <!-- Plotly añadido -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   <script src="/public/script/mapa.js" defer></script>
   <script src="/public/script/incendio_mes.js" defer></script>
@@ -19,14 +19,13 @@
   <header>
     <nav>
       <ul>
-        <li><a href="/public/HTML/menu.html">Menu</a></li>
-        <li><a href="/public/HTML/incio.html">Inicio</a></li>
         <li><a href="/public/HTML/consultas.html">Consultas</a></li>
         <li><a href="/public/HTML/sistemas.html">Sistemas</a></li>
         <li><a href="/public/HTML/mapa_incendis.html">Mapa</a></li>
         <li><a href="/public/HTML/API_GEN.html">API</a></li>
         <li><a href="/public/HTML/ods.html">ODS</a></li>
         <li><a href="/public/HTML/conclusiones.html">Conclusiones</a></li>
+        <li><a href="/public/HTML/index.html">Inicio</a></li>
       </ul>
     </nav>
   </header>
@@ -53,7 +52,6 @@
       </div>
     </section>
 
-    
     <section id="analisisIncendios">
       <h2>Resum General i Anàlisi</h2>
       <table id="tablaResumen" class="tabla-resumen"></table>
@@ -70,9 +68,10 @@
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      initMapa();
-      initIncendios();
-      initSuperficiePorAny();
+      initMapa?.();
+      initIncendios?.();
+      initSuperficiePorAny?.();
+      initComparativas?.();
     });
   </script>
 </body>
