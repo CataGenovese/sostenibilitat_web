@@ -1,4 +1,5 @@
 async function loadDates() {
+  //const res = await fetch("http://localhost:3000/dates");
   const res = await fetch("/dates");
   const dates = await res.json();
   const select = document.getElementById("fecha-select");
@@ -11,6 +12,7 @@ async function loadDates() {
 }
 
 async function loadComarcas() {
+  //const res = await fetch("http://localhost:3000/comarcas");
   const res = await fetch("/comarcas");
   const comarcas = await res.json();
   const select = document.getElementById("comarca-select");

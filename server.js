@@ -12,12 +12,22 @@ const __dirname = dirname(__filename);
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static("public"));
-app.use('/script', express.static(path.join(__dirname, 'script'))); // 🔥 Esto es lo nuevo
 
+// Sirve todo lo que está en public directamente
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
+// Sirve específicamente el contenido de /public/script en /script
+app.use('/script', express.static(path.join(__dirname, 'public', 'script')));
+
+// Ruta raíz "/" que sirve menu.html
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "HTML", "menu.html"));
+});
+
+// Las demás rutas API que ya tienes:
 const readData = () => {
   try {
-    const data = fs.readFileSync("./script/incendios.json");
+    const data = fs.readFileSync(path.join(__dirname, "public", "script", "incendios.json"));
     return JSON.parse(data);
   } catch (error) {
     console.error("Error leyendo JSON:", error);
