@@ -94,20 +94,23 @@ h2 {
 /* Selects dentro de filtros ocupan todo el ancho */
 #filtros select {
     width: 100%;
+    max-width: 400px; /* antiguo */
     margin: 0.3rem 0 1rem 0;
-    padding: 0.5rem;
+    padding: 0.8rem 1rem; /* antiguo */
     font-size: 1rem;
-    border: 2px solid #4a6f47;
-    border-radius: 8px;
-    background-color: #eef5e9;
-    color: #2e382e;
-    transition: border-color 0.3s ease;
+    border: none; /* antiguo */
+    border-radius: 12px; /* antiguo */
+    background: #e0f2f1; /* antiguo */
+    box-shadow: inset 4px 4px 10px #c8e6c9, inset -4px -4px 10px #ffffff; /* antiguo */
+    transition: all 0.3s ease; /* antiguo */
+    color: #1b5e20; /* antiguo */
 }
 
 #filtros select:focus {
-    border-color: #355e3b;
     outline: none;
+    box-shadow: 0 0 5px 2px #81c784; /* antiguo */
 }
+
 
 /* Botón buscar dentro de filtros */
 #buscarBtn {
