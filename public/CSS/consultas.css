@@ -1,4 +1,4 @@
-/* Reset básico */
+/* === RESETEO GENERAL Y BASE === */
 * {
     margin: 0;
     padding: 0;
@@ -6,37 +6,44 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f6f8;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
+    padding: 0;
+}
+
+/* === HEADER Y NAVEGACIÓN === */
+header {
+    background-color: #4a6f47; /* tono coherente con conclusiones */
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
     padding: 0;
     margin: 0;
 }
 
-/* Estilo para el header y nav */
-header {
-    background-color: #2c3e50;
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-nav a {
-    color: #ecf0f1;
+header nav ul li a {
+    color: white;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
 }
 
-nav a:hover {
-    color: #1abc9c;
+header nav ul li a:hover,
+nav a.active {
+    background-color: #355e3b;
+    color: white;
 }
 
 /* Estilo del main y sección de consultas */

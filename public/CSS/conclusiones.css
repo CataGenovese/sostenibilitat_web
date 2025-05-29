@@ -1,14 +1,21 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
+/* === RESETEO GENERAL Y BASE === */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
     background-color: #f9f9f9;
     color: #333;
     line-height: 1.6;
+    padding: 0;
 }
 
+/* === HEADER Y NAVEGACIÓN === */
 header {
-    background-color: #4a6f47;
+    background-color: #4a6f47; /* tono coherente con conclusiones */
     color: white;
     padding: 1rem 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -16,14 +23,12 @@ header {
 
 header nav ul {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
-}
-
-header nav ul li {
-    margin: 0 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
 }
 
 header nav ul li a {
@@ -31,62 +36,74 @@ header nav ul li a {
     text-decoration: none;
     font-weight: bold;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 6px;
     transition: background-color 0.3s ease;
 }
 
-header nav ul li a:hover {
-    background-color: #355e3b;
-}
-
+header nav ul li a:hover,
 nav a.active {
     background-color: #355e3b;
     color: white;
 }
 
+/* === SECCIÓN CONCLUSIONES === */
 #conclusiones {
-    padding: 2rem;
     max-width: 900px;
-    margin: auto;
+    margin: 40px auto;
+    padding: 20px 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Títulos */
 #conclusiones h1 {
     color: #4a6f47;
     font-size: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 #conclusiones h2 {
     color: #355e3b;
     margin-top: 2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.4rem;
+    border-left: 4px solid #4a6f47;
+    padding-left: 10px;
+}
+
+/* Listas y párrafos */
+#conclusiones ul,
+#conclusiones p {
+    background-color: #f3f7f1;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
 }
 
 #conclusiones ul {
     padding-left: 1.5rem;
-    margin-bottom: 1rem;
 }
 
 #conclusiones li {
     margin-bottom: 0.5rem;
+    list-style: disc;
 }
 
 #conclusiones p {
-    margin-bottom: 1rem;
+    text-align: justify;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    header nav ul {
+    nav ul {
         flex-direction: column;
         align-items: center;
     }
 
-    header nav ul li {
-        margin: 10px 0;
-    }
-
     #conclusiones {
-        padding: 1rem;
+        padding: 20px;
+        margin: 20px;
     }
 }
