@@ -2,6 +2,7 @@ const BASE_URL = "https://analisi.transparenciacatalunya.cat/resource/9r29-e8ha.
 const APP_TOKEN = "ISZKwx5fLfNNV_l_vd0ChqUENodaPj5vhxb2";
 
 const buscarBtn = document.getElementById("buscarBtn");
+const resetBtn = document.getElementById("resetBtn");
 const graficoCanvas = document.getElementById("grafico");
 let grafico = null;
 
@@ -67,6 +68,7 @@ async function getAll(campo, useToken = false) {
 function actualizarBotonBuscar() {
   const haySeleccionado = Object.values(selects).some(select => select.value);
   buscarBtn.style.display = haySeleccionado ? "inline-block" : "none";
+  resetBtn.style.display = haySeleccionado ? "inline-block" : "none";
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -145,3 +147,20 @@ buscarBtn.addEventListener("click", async () => {
     }
   });
 });
+
+resetBtn.addEventListener("click", async () => {
+  for (const campo of campos) {
+    selects[campo].selectedIndex = 0;
+  }
+
+  actualizarBotonBuscar();
+
+  // Opcional: limpiar gráfico y salida
+  if (grafico) {
+    grafico.destroy();
+    grafico = null;
+  }
+
+  document.getElementById("output").textContent = "";
+});
+

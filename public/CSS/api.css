@@ -69,6 +69,10 @@ h2 {
     font-size: 1rem;
 }
 
+.campos p strong {
+    color: #355e3b;
+}
+
 /* Contenedor principal filtros + resultados */
 #contenedor-filtros-resultados {
     display: flex;
@@ -87,28 +91,30 @@ h2 {
 
 /* Etiquetas dentro de filtros */
 #filtros label {
-    margin-top: 0.5rem;
     font-weight: bold;
+    display: block;
+    margin: 1rem 0 0.5rem;
+    color: #1b5e20;
+    font-size: 1rem;
 }
 
 /* Selects dentro de filtros ocupan todo el ancho */
 #filtros select {
     width: 100%;
-    max-width: 400px; /* antiguo */
-    margin: 0.3rem 0 1rem 0;
-    padding: 0.8rem 1rem; /* antiguo */
+    max-width: 400px;
+    padding: 0.8rem 1rem;
     font-size: 1rem;
-    border: none; /* antiguo */
-    border-radius: 12px; /* antiguo */
-    background: #e0f2f1; /* antiguo */
-    box-shadow: inset 4px 4px 10px #c8e6c9, inset -4px -4px 10px #ffffff; /* antiguo */
-    transition: all 0.3s ease; /* antiguo */
-    color: #1b5e20; /* antiguo */
+    border: none;
+    border-radius: 12px;
+    background: #e0f2f1;
+    box-shadow: inset 4px 4px 10px #c8e6c9, inset -4px -4px 10px #ffffff;
+    transition: all 0.3s ease;
+    color: #1b5e20;
 }
 
 #filtros select:focus {
     outline: none;
-    box-shadow: 0 0 5px 2px #81c784; /* antiguo */
+    box-shadow: 0 0 5px 2px #81c784;
 }
 
 
@@ -123,6 +129,7 @@ h2 {
     cursor: pointer;
     transition: background-color 0.3s ease;
     align-self: flex-start;
+    margin-top: 1rem;
 }
 
 #buscarBtn:hover {
@@ -147,18 +154,46 @@ h2 {
 
 /* Output JSON dentro de resultados */
 #output {
-    background-color: #eef5e9;
-    border: 1px solid #b6c9a9;
+    background-color: #e8f5e9;
     padding: 1rem;
-    margin-top: 2rem;
-    overflow-x: auto;
+    border-radius: 12px;
+    margin-top: 1rem;
     white-space: pre-wrap;
-    border-radius: 8px;
-    font-family: 'Courier New', Courier, monospace;
-    color: #2e382e;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #66bb6a;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Courier New', monospace;
+    color: #1b5e20;
     width: 100%;
+    min-height: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
 }
+
+#output.loading::before {
+    content: "⏳ Cargando...";
+    color: #388e3c;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#resetBtn {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    background-color: #388e3c;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+    margin-top: 1rem;
+}
+
+#resetBtn:hover {
+    background-color: #2e7030;
+}
+
 
 /* Ilustración y otros estilos */
 #visual {

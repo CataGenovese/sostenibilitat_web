@@ -76,7 +76,7 @@ nav a.active {
 /* Listas y párrafos */
 #conclusiones ul,
 #conclusiones p {
-    background-color: #f3f7f1;
+    background-color: #f3fbf0;
     padding: 10px 15px;
     border-radius: 8px;
     margin-bottom: 1.2rem;
@@ -89,6 +89,12 @@ nav a.active {
 #conclusiones li {
     margin-bottom: 0.5rem;
     list-style: disc;
+}
+
+#conclusiones li strong {
+    margin-bottom: 0.5rem;
+    list-style: disc;
+    color: #1b401b;
 }
 
 #conclusiones p {

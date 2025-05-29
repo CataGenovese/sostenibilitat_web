@@ -15,7 +15,7 @@ body {
 
 /* === HEADER Y NAVEGACIÓN === */
 header {
-    background-color: #4a6f47; /* tono coherente con conclusiones */
+    background-color: #4a6f47;
     color: white;
     padding: 1rem 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -27,8 +27,6 @@ header nav ul {
     justify-content: center;
     flex-wrap: wrap;
     gap: 15px;
-    padding: 0;
-    margin: 0;
 }
 
 header nav ul li a {
@@ -43,12 +41,11 @@ header nav ul li a {
 header nav ul li a:hover,
 nav a.active {
     background-color: #355e3b;
-    color: white;
 }
 
 /* === SECCIÓN ODS === */
 #ods {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 20px 30px;
     display: flex;
@@ -60,7 +57,7 @@ nav a.active {
 /* === TARJETAS ODS === */
 .ods-block {
     flex: 1 1 45%;
-    background-color: #ffffff;
+    background-color: #f5fdf6;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 2rem;
@@ -71,7 +68,19 @@ nav a.active {
     transform: scale(1.01);
 }
 
-/* === TÍTULOS ODS === */
+/* === IMÁGENES === */
+.ods-image {
+    width: 80%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 0 auto 1rem; /* margen superior 0, inferior 1rem, auto en los lados */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    display: block; /* para que margin auto funcione correctamente */
+}
+
+
+/* === TÍTULOS === */
 .ods-block h1 {
     color: #4a6f47;
     font-size: 1.8rem;
@@ -85,7 +94,6 @@ nav a.active {
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
     font-size: 1.4rem;
-    border-left: 4px solid #4a6f47;
     padding-left: 10px;
 }
 
@@ -98,7 +106,7 @@ nav a.active {
 .ods-block ul li {
     margin-bottom: 0.5rem;
     list-style: disc;
-    background-color: #f3f7f1;
+    background-color: #e2f5e2;
     padding: 10px 15px;
     border-radius: 8px;
 }
@@ -107,12 +115,40 @@ nav a.active {
     color: #4a6f47;
 }
 
-/* === NOTA FINAL === */
-.ods-note {
-    margin-top: 1.5rem;
-    font-style: italic;
-    color: #555;
+/* === ANIMACIÓN PARA NOTAS === */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+/* === NOTA FINAL CON ICONO Y ANIMACIÓN === */
+.ods-note {
+    position: relative;
+    font-style: italic;
+    color: #4caf50;
+    margin-top: 1rem;
+    border-left: 4px solid #81c784;
+    padding-left: 2rem;
+    font-size: 0.9rem;
+    animation: fadeInSlide 0.6s ease-out;
+}
+
+/* Icono decorativo 🛈 */
+.ods-note::before {
+    content: "🛈";
+    position: absolute;
+    left: 0;
+    top: 0rem;
+    font-size: 1.2rem;
+    color: #66bb6a;
+}
+
 
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
