@@ -129,4 +129,23 @@ main:hover {
     margin: 1rem;
     padding: 1.2rem 1rem;
   }
+
+
+
+}
+.titulo-principal {
+  text-align: center;
+  margin: 2.5rem auto 1.5rem auto;
+  padding: 1rem;
+  background-color: #eaf4e9;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  max-width: 900px;
+}
+
+.titulo-principal h1 {
+  font-size: 2rem;
+  color: #2c4e30;
+  font-weight: 700;
+  margin: 0;
 }
