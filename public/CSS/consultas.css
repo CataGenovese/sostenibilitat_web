@@ -192,3 +192,12 @@ pre#details {
         padding: 1rem;
     }
 }
+
+.campos {
+    margin-left: 0.5em;
+    font-size: 1rem;
+}
+
+.campos p strong {
+    color: #355e3b;
+}
