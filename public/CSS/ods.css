@@ -141,7 +141,7 @@ nav a.active {
 
 /* Icono decorativo 🛈 */
 .ods-note::before {
-    content: "🛈";
+    content: "ℹ️"; /*"🛈"*/
     position: absolute;
     left: 0;
     top: 0rem;
